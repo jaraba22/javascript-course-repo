@@ -19,11 +19,14 @@
     </form>
     <br>
     <div id="timezoneDiv"></div>
+    <br>
+    <div id="myTime"></div>
+
     <script type="text/javascript">
         function readForm(){
             var radioButtons;
             var tz;
-            
+
 
             radioButtons = document.getElementsByName("timezone");
 
@@ -35,8 +38,25 @@
                 }
                 document.getElementById("timezoneDiv").innerHTML = tz;
 
-            }
+            }        
         }
+        function printTimezone(){
+            var myNewDate = new Date();
+            var myHour = myNewDate.getHours();
+            var myMinute = myNewDate.getMinutes();
+            var mySeconds = myNewDate.getSeconds();
+
+            var myTime = myHour + ":" + myMinute + ":" + mySeconds;           
+
+            document.getElementById("myTime").innerHTML = myTime;
+            setTimeout("printTimezone()",1000);
+            
+            
+        }
+        printTimezone();
+            
+        
+    
     </script>
 </body>
 </html>
